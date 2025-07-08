@@ -24,12 +24,11 @@ export default function Thumbnails({ slides, currentSlide, onSlideChange }: Prop
 
   return (
     <div className={`h-full border-t md:border-t-0 md:border-l bg-background flex flex-col transition-all duration-300 ${isCollapsed ? 'w-10' : 'w-full md:w-48'}`}>
-      <div className="flex items-center justify-between p-2 border-b">
-        <span className={`text-xs font-medium ${isCollapsed ? 'hidden' : 'block'}`}>Slides</span>
+      <div className="flex items-center justify-end p-2">
         <Button
           variant="ghost"
           size="icon"
-          className="h-6 w-6"
+          className="h-6 w-6 my-1"
           onClick={() => setIsCollapsed(!isCollapsed)}
         >
           {isCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}

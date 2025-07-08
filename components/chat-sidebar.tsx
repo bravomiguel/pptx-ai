@@ -24,14 +24,11 @@ export default function ChatSidebar() {
   return (
     <div className="w-full md:w-80 border-b md:border-b-0 md:border-r bg-background flex flex-col">
       {/* Chat Header */}
-      <div className="flex items-center justify-between p-4 border-b bg-muted/50">
+      <div className="flex items-center justify-between px-4 py-2.5">
         <h2 className="text-sm font-medium truncate flex-1">Presentation Viewer Discussion</h2>
         <div className="flex items-center gap-1 ml-2">
           <Button variant="ghost" size="icon" className="h-7 w-7">
             <Plus className="w-4 h-4" />
-          </Button>
-          <Button variant="ghost" size="icon" className="h-7 w-7">
-            <Cloud className="w-4 h-4" />
           </Button>
           <Button variant="ghost" size="icon" className="h-7 w-7">
             <Clock className="w-4 h-4" />
