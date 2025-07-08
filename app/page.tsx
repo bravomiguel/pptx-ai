@@ -9,7 +9,7 @@ import Thumbnails from "@/components/thumbnails"
 const slides = [
   {
     id: 1,
-    title: "Paid Search - Recent Projects For Training",
+    title: "Paid Searches - Recent Projects For Training",
     thumbnail: "/placeholder.svg?height=120&width=160",
   },
   {
@@ -50,7 +50,7 @@ export default function Viewer() {
   return (
     <div className="h-screen flex flex-col bg-background">
       <Header />
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 min-h-0 overflow-hidden">
         <ChatSidebar />
         <MainView
           slides={slides}

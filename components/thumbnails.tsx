@@ -18,13 +18,9 @@ type Props = {
 
 export default function Thumbnails({ slides, currentSlide, onSlideChange }: Props) {
   return (
-    <div className="w-64 border-l bg-background flex flex-col">
-      <div className="p-4 border-b">
-        <h3 className="font-semibold text-sm">Slides</h3>
-        <p className="text-xs text-muted-foreground mt-1">{slides.length} slides total.</p>
-      </div>
-      <ScrollArea className="flex-1">
-        <div className="p-2 space-y-2">
+    <div className="w-64 h-full border-l bg-background flex flex-col">
+      <ScrollArea className="flex-1 h-full">
+        <div className="p-2 space-y-2 mr-2">
           {slides.map((slide) => (
             <Card
               key={slide.id}
