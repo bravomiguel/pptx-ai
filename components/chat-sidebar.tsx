@@ -22,7 +22,7 @@ import {
 export default function ChatSidebar() {
   const [chatMessage, setChatMessage] = useState("")
   return (
-    <div className="w-80 border-r bg-background flex flex-col">
+    <div className="w-full md:w-80 border-b md:border-b-0 md:border-r bg-background flex flex-col">
       {/* Chat Header */}
       <div className="flex items-center justify-between p-4 border-b bg-muted/50">
         <h2 className="text-sm font-medium truncate flex-1">Presentation Viewer Discussion</h2>

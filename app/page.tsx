@@ -50,7 +50,7 @@ export default function Viewer() {
   return (
     <div className="h-screen flex flex-col bg-background">
       <Header />
-      <div className="flex flex-1 min-h-0 overflow-hidden">
+      <div className="flex flex-1 min-h-0 overflow-hidden flex-col md:flex-row">
         <ChatSidebar />
         <MainView
           slides={slides}

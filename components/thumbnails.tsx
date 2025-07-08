@@ -1,7 +1,10 @@
 "use client"
 
+import { useState } from "react"
 import { Card } from "@/components/ui/card"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { Button } from "@/components/ui/button"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 
 type Slide = {
@@ -17,41 +20,71 @@ type Props = {
 }
 
 export default function Thumbnails({ slides, currentSlide, onSlideChange }: Props) {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
   return (
-    <div className="w-64 h-full border-l bg-background flex flex-col">
-      <ScrollArea className="flex-1 h-full">
-        <div className="p-2 space-y-2 mr-2">
-          {slides.map((slide) => (
-            <Card
-              key={slide.id}
-              className={`cursor-pointer transition-all hover:shadow-md ${
-                currentSlide === slide.id ? "ring-2 ring-primary bg-primary/5" : "hover:bg-muted/50"
-              }`}
-              onClick={() => onSlideChange(slide.id)}
-            >
-              <div className="p-3">
-                <div className="flex items-start gap-3">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-9 bg-muted rounded border flex items-center justify-center text-xs font-medium">
-                      {slide.id}
+    <div className={`h-full border-t md:border-t-0 md:border-l bg-background flex flex-col transition-all duration-300 ${isCollapsed ? 'w-10' : 'w-full md:w-48'}`}>
+      <div className="flex items-center justify-between p-2 border-b">
+        <span className={`text-xs font-medium ${isCollapsed ? 'hidden' : 'block'}`}>Slides</span>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-6 w-6"
+          onClick={() => setIsCollapsed(!isCollapsed)}
+        >
+          {isCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
+        </Button>
+      </div>
+      
+      {!isCollapsed && (
+        <ScrollArea className="flex-1 h-full">
+          <div className="p-2 space-y-2 mr-2">
+            {slides.map((slide) => (
+              <Card
+                key={slide.id}
+                className={`cursor-pointer transition-all hover:shadow-md ${
+                  currentSlide === slide.id ? "ring-2 ring-primary bg-primary/5" : "hover:bg-muted/50"
+                }`}
+                onClick={() => onSlideChange(slide.id)}
+              >
+                <div className="p-1.5">
+                  <div className="flex items-start gap-2">
+                    <div className="flex-shrink-0">
+                      <div className="w-5 h-4 bg-muted rounded border flex items-center justify-center text-xs font-medium">
+                        {slide.id}
+                      </div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="aspect-video w-full overflow-hidden rounded border relative">
+                        <Image
+                          src={slide.thumbnail || "/placeholder.svg"}
+                          alt={`Slide ${slide.id} thumbnail`}
+                          fill
+                          sizes="100%"
+                          className="object-cover"
+                        />
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1 text-ellipsis overflow-hidden">{slide.title}</p>
                     </div>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <Image
-                      src={slide.thumbnail || "/placeholder.svg"}
-                      alt={`Slide ${slide.id} thumbnail`}
-                      width={120}
-                      height={90}
-                      className="w-full h-auto rounded border"
-                    />
-                    <p className="text-xs text-muted-foreground mt-2 line-clamp-2">{slide.title}</p>
-                  </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            ))}
+          </div>
+        </ScrollArea>
+      )}
+      
+      {isCollapsed && (
+        <div className="flex flex-col items-center pt-2 gap-1">
+          {slides.map((slide) => (
+            <div 
+              key={slide.id}
+              className={`h-2 w-2 rounded-full my-1 cursor-pointer ${currentSlide === slide.id ? "bg-primary" : "bg-muted-foreground/30"}`}
+              onClick={() => onSlideChange(slide.id)}
+            />
           ))}
         </div>
-      </ScrollArea>
+      )}
     </div>
   )
 } 
