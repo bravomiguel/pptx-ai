@@ -49,11 +49,6 @@ export default function Thumbnails({ slides, currentSlide, onSlideChange, onColl
               >
                 <div className="p-1.5">
                   <div className="flex items-start gap-2">
-                    <div className="flex-shrink-0">
-                      <div className="w-5 h-4 bg-muted rounded border flex items-center justify-center text-xs font-medium">
-                        {slide.id}
-                      </div>
-                    </div>
                     <div className="flex-1 min-w-0">
                       <div className="aspect-video w-full overflow-hidden rounded border relative">
                         <Image
