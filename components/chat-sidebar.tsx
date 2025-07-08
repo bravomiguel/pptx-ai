@@ -69,7 +69,7 @@ export default function ChatSidebar() {
               </p>
 
               {/* Action Buttons */}
-              <div className="flex items-center gap-2 mt-3">
+              {/* <div className="flex items-center gap-2 mt-3">
                 <Button variant="ghost" size="icon" className="h-8 w-8">
                   <ThumbsUp className="w-4 h-4" />
                 </Button>
@@ -82,7 +82,7 @@ export default function ChatSidebar() {
                 <Button variant="ghost" size="icon" className="h-8 w-8">
                   <RotateCcw className="w-4 h-4" />
                 </Button>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -101,7 +101,7 @@ export default function ChatSidebar() {
       </ScrollArea>
 
       {/* Chat Input */}
-      <div className="p-4 border-t">
+      <div className="p-4 pb-6">
         <div className="flex items-center gap-2 p-2 border rounded-lg">
           <input
             type="text"
@@ -110,9 +110,6 @@ export default function ChatSidebar() {
             onChange={(e) => setChatMessage(e.target.value)}
             className="flex-1 bg-transparent outline-none text-sm"
           />
-          <Button variant="ghost" size="icon" className="h-6 w-6">
-            <TrendingUp className="w-3 h-3" />
-          </Button>
           <Button variant="ghost" size="icon" className="h-6 w-6">
             <Paperclip className="w-3 h-3" />
           </Button>

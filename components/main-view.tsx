@@ -17,11 +17,12 @@ type Props = {
   currentSlide: number
   onSlideChange: (slideId: number) => void
   zoomLevel: number
+  isThumbnailsCollapsed?: boolean
 }
 
-export default function MainView({ slides, currentSlide, onSlideChange, zoomLevel }: Props) {
+export default function MainView({ slides, currentSlide, onSlideChange, zoomLevel, isThumbnailsCollapsed = false }: Props) {
   return (
-    <div className="flex-1 flex flex-col min-w-0">
+    <div className={`flex-1 flex flex-col min-w-0 transition-all duration-300`}>
       {/* Navigation Controls */}
       <div className="flex items-center justify-between px-2 sm:px-4 py-2 overflow-x-auto">
         <div className="flex items-center gap-1 sm:gap-2">
@@ -50,8 +51,10 @@ export default function MainView({ slides, currentSlide, onSlideChange, zoomLeve
         </div>
       </div>
       {/* Main Slide View */}
-      <div className="flex-1 flex items-center justify-center p-2 sm:p-4 md:p-8 overflow-auto">
-        <Card className="w-full max-w-4xl aspect-[16/9] flex items-center justify-center bg-white shadow-lg">
+      <div className="flex-1 flex items-center justify-center p-6 overflow-auto">
+        <Card 
+          className={`w-full aspect-[16/9] flex items-center justify-center bg-white shadow-none transition-all duration-300`}
+        >
           <div
             className="w-full h-full flex items-center justify-center overflow-hidden"
             style={{ transform: `scale(${zoomLevel / 100})` }}

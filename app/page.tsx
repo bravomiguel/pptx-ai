@@ -42,9 +42,14 @@ const slides = [
 export default function Viewer() {
   const [currentSlide, setCurrentSlide] = useState(1)
   const [zoomLevel, setZoomLevel] = useState(100)
+  const [isThumbnailsCollapsed, setIsThumbnailsCollapsed] = useState(false)
 
   const handleSlideChange = (slideId: number) => {
     setCurrentSlide(slideId)
+  }
+
+  const handleThumbnailsCollapse = (collapsed: boolean) => {
+    setIsThumbnailsCollapsed(collapsed)
   }
 
   return (
@@ -57,11 +62,14 @@ export default function Viewer() {
           currentSlide={currentSlide}
           onSlideChange={handleSlideChange}
           zoomLevel={zoomLevel}
+          isThumbnailsCollapsed={isThumbnailsCollapsed}
         />
         <Thumbnails
           slides={slides}
           currentSlide={currentSlide}
           onSlideChange={handleSlideChange}
+          onCollapseChange={handleThumbnailsCollapse}
+          isCollapsed={isThumbnailsCollapsed}
         />
       </div>
     </div>
